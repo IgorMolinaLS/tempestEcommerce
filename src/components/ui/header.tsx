@@ -10,10 +10,17 @@ import {
 } from "lucide-react";
 import { Button } from "./button";
 import { Card } from "./card";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
+import Link from "next/link";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -67,18 +74,29 @@ const Header = () => {
           )}
 
           <div className="mt-2 flex flex-col gap-2">
-            <Button variant="outline" className="w-full justify-start gap-3">
-              <HomeIcon size={18} />
-              Inicio
-            </Button>
-            <Button variant="outline" className="w-full justify-start gap-3">
-              <PercentIcon size={18} />
-              Ofertas
-            </Button>
-            <Button variant="outline" className="w-full justify-start gap-3">
-              <ListOrderedIcon size={18} />
-              Catálogo
-            </Button>
+            <Link href={"/"}>
+              <Button variant="outline" className="w-full justify-start gap-3">
+                <HomeIcon size={18} />
+                Inicio
+              </Button>
+            </Link>
+            <SheetClose asChild>
+              <Button variant="outline" className="w-full justify-start gap-3">
+                <PercentIcon size={18} />
+                Ofertas
+              </Button>
+            </SheetClose>
+            <SheetClose asChild>
+              <Link href={"/catalogue"}>
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-3"
+                >
+                  <ListOrderedIcon size={18} />
+                  Catálogo
+                </Button>
+              </Link>
+            </SheetClose>
             {status === "authenticated" && (
               <Button
                 onClick={handleLogoutClick}
@@ -92,9 +110,11 @@ const Header = () => {
           </div>
         </SheetContent>
       </Sheet>
-      <h1 className="text-lg font-semibold">
-        <span className="text-primary">Tempest</span> Store
-      </h1>
+      <Link href={"/"}>
+        <h1 className="text-lg font-semibold">
+          <span className="text-primary">Tempest</span> Store
+        </h1>
+      </Link>
       <Button size="icon" variant="outline">
         <ShoppingCartIcon />
       </Button>
