@@ -75,12 +75,17 @@ const Header = () => {
           )}
 
           <div className="mt-2 flex flex-col gap-2">
-            <Link href={"/"}>
-              <Button variant="outline" className="w-full justify-start gap-3">
-                <HomeIcon size={18} />
-                Inicio
-              </Button>
-            </Link>
+            <SheetClose asChild>
+              <Link href={"/"}>
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-3"
+                >
+                  <HomeIcon size={18} />
+                  Inicio
+                </Button>
+              </Link>
+            </SheetClose>
             <SheetClose asChild>
               <Button variant="outline" className="w-full justify-start gap-3">
                 <PercentIcon size={18} />
