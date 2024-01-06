@@ -5,6 +5,8 @@ import { Barcode } from "lucide-react";
 import { getServerSession } from "next-auth";
 import OrderItem from "./components/OrderItem";
 
+export const dynamic = "force-dynamic";
+
 async function OrderPage() {
   const user = getServerSession(authOptions);
 
