@@ -1,5 +1,6 @@
 "use client";
 import {
+  Barcode,
   HomeIcon,
   ListOrderedIcon,
   LogInIcon,
@@ -83,6 +84,17 @@ const Header = () => {
                 >
                   <HomeIcon size={18} />
                   Inicio
+                </Button>
+              </Link>
+            </SheetClose>
+            <SheetClose asChild>
+              <Link href={"/orders"}>
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-3"
+                >
+                  <Barcode size={18} />
+                  Meus pedidos
                 </Button>
               </Link>
             </SheetClose>
